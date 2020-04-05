@@ -6,7 +6,7 @@ New try at making a microprocessor/computer (let's see what happens)
 
 Requirements:
 	decoding of instructions
-	1 memory channel -> single memory for DAT,INS,etc...
+	*1 memory channel -> single memory for DAT,INS,etc...
 	memory management
 	*adapting to existing technology(chips)
 	useful amount of registers
