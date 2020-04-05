@@ -1,0 +1,24 @@
+README - JF2020-1
+(06.04.2020)
+
+learned from old project
+New try at making a microprocessor/computer (let's see what happens)
+
+Requirements:
+	decoding of instructions
+	1 memory channel -> single memory for DAT,INS,etc...
+	memory management
+	*adapting to existing technology(chips)
+	useful amount of registers
+	dependable r/w of memory
+	*powerful mathematical unit
+
+	-> clean processing concept
+
+Problems:
+	control of big memory
+	organizing in memory DAT,INS
+	function of jumps
+
+SOLUTIONS:
+	memory segmentation
