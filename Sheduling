@@ -1,0 +1,23 @@
+Sheduling / Time Management
+---------------------------
+19.06.2020
+
+Tick: Kurzzeitiges "Pingsignal" fuer einzelne CPU Bauteile durch Requests ausgeloest
+
+Requests: 
+InsLoad
+	Request zum Auffrischen des Instruktionsregisters
+DatLoad
+	Request zum Laden von Daten in Register
+AdrLoad
+	Request zum Laden der naechsten Adresse
+
+Bauteilzustaende:
+ALU Busy State
+	ALU rechnet
+Datenregister Busy State
+	Register laedt/speichert Daten
+InsReg Busy State
+	Neue Instruktion wird geladen
+Decoder State
+	Instruktion wird aufgeschluesselt

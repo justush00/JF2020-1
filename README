@@ -1,5 +1,5 @@
 README - JF2020-1
-(10.04.2020)
+(21.06.2020)
 
 documentation on progression
 
@@ -24,3 +24,11 @@ Problems:
 
 SOLUTIONS:
 	memory segmentation
+	64 bit memory (no segmentation needed (yet), faster processing)
+
+Idea for Multicore System:
+	
+	_________		______________________________		/-->CPU0
+	| Memory| <---> |Memory Management Unit (MMU)|  <--/-->	CPU1
+
+
