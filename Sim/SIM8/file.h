@@ -85,7 +85,122 @@ void loadmem()
 
 void initmem()
 {
-  initialize();
+  for(int a = 0; a < 255; a++)
+  {
+    printf("DEBUG1: %i\n", a);
+    memory[a] = 0;
+  }
   savemem();
+}
+
+void assemble()
+{
+  FILE* in;
+  FILE* out;
+
+  char* INS = malloc(3);
+  char* OP0 = malloc(1);
+  char* OP1 = malloc(1);
+
+  printf("Please enter the name of the source (.asm): ");
+  char source[20];
+  scanf("%s\0", source);
+
+  printf("Please enter the name of the target (.mem): ");
+  char target[20];
+  scanf("%s\0", target);
+
+  in = fopen(source, "r");
+  out = fopen(target, "w+");
+
+  if (in == NULL)
+  {
+      printf("Sorry, sourcefile does not exist.\n");
+      exit(EXIT_FAILURE);
+  }
+
+  int op0;
+  int op1;
+
+  for(int c = 0; c < 255; c++)
+  {
+    //INS = 0;
+    //OP0 = 0;
+    //OP1 = 0;
+    fscanf(in, "%s %s %s\n", INS, OP0, OP1);
+    printf("%s %s %s\n", INS, OP0, OP1);
+    if(strcmp(INS, "nop") == 0)
+        {
+          fprintf(out, "0\n");
+          continue;
+        }
+    if(strcmp(INS, "loa") == 0) //op0 sind hier die zu ladenden daten
+        {
+          fprintf(out, "1\n");//op0 is stored in adress c+1
+          op0 = atoi(OP0);
+          fprintf(out, "%i\n", op0);
+          c = c+1;
+          continue;
+        }
+    if(strcmp(INS, "str") == 0)
+        {
+          fprintf(out, "2\n");
+          continue;
+        }
+    if(strcmp(INS, "jmp") == 0)
+        {
+          fprintf(out, "3\n"); //op0
+          continue;
+        }
+    if(strcmp(INS, "alu") == 0)
+        {
+          fprintf(out, "6\n");
+          op0 = atoi(OP1);
+          fprintf(out, "%i\n", op0);
+          fprintf(out, "7\n");
+          op1 = atoi(OP0);
+          fprintf(out, "%i\n", op1);
+          fprintf(out, "4\n");
+          c = c + 4;
+          continue;
+        }
+    if(strcmp(INS, "cmp") == 0)
+        {
+          fprintf(out, "5\n");
+          continue;
+        }
+    if(strcmp(INS, "o0l") == 0) //laedt operatorregister; operatorregister != operator
+        {
+          fprintf(out, "6\n"); //load op0
+          op0 = atoi(OP0);
+          if(op0 > 15)
+          {
+            printf("Operator is invalid! 0-15\n");
+            break;
+          }
+          fprintf(out, "%i\n", op0);
+          c = c+1;
+          continue;
+        }
+    if(strcmp(INS, "o1l") == 0)
+        {
+          fprintf(out, "7\n"); //op1
+          op0 = atoi(OP0);
+          if(op0 > 15)
+          {
+            printf("Operator is invalid! 0-15\n");
+          }
+          fprintf(out, "%i\n", op0);
+          c = c+1;
+          continue;
+        }
+    if(strcmp(INS, "hlt") == 0)
+        {
+          fprintf(out, "255\n");
+          continue;
+        }
+  }
+  fclose(in);
+  fclose(out);
 }
 #endif

@@ -4,17 +4,23 @@
 #define bandwidth 8 //channel width
 
 //switch case var
+int SMA=1; //Stepping Mode
 char option = 0;
 int globala = 0;
 
 int i = 0;
 
+int n = 0; //placeholder for instructionregister
+
 int operator0 = 0;
+int operator1 = 0;
 
 //currentaddress
 int currentaddress;
 bool binary[8];
 
+
+int aluout;
 //Memory Vars
 //bool memory64[64][255]; //255 adresses of 64bit memory
 //bool memory32[32][255];
@@ -24,7 +30,7 @@ int memory[255];
 
 //Register
 int instructionregister0;
-int dataregister[16];
+int dataregister[16]; //0 alulin0
 /*bool dataregister0[64]; //aluin0
 bool dataregister1[64];
 bool dataregister2[64];
@@ -47,7 +53,10 @@ bool loadflag; //1: load from memory
 bool writeflag; //1: write to memory
 bool returnflag; //return from ALU
 bool jumpflag; //flag for memoryjumps
-bool haltflag = 1; //halts CPU, almost like clock in real CPU
+bool aluflag; //flag for loops utilizes A=B Output from 74181
+bool op0loadflag; //1: load operator0 from memory -> makes full 8 Bit instructions/operators possible
+bool op1loadflag;
+bool haltflag = 0; //halts CPU, almost like clock in real CPU
 
 //Requests
 bool insloadrequest; //request for refreshing instructionregister

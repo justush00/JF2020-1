@@ -3,6 +3,11 @@
 #ifndef GRAPHICAL_H
 #define GRAPHICAL_H
 
+const char* insdecode()
+{
+	return "est";
+}
+
 void cls()
 {
 	for(int y = 0; y < 80; y++)
@@ -27,36 +32,37 @@ void interfacehalt() //setup interface for sim
 	printf("________________________________________________________________________________\n");
 	printf("________________________________________________________________________________\n");
 	printf("________________________________________________________________________________\n");
-	printf("Options: 1. initialize running state____________________________________________\n");
-	printf("_________2. create new memory file with zeroes__________________________________\n");
+	printf("Options: 1. initialize running state (auto set flags, load .mem file____________\n");
+	printf("_________2. show registers______________________________________________________\n");
 	printf("_________3. edit memory_________________________________________________________\n");
 	printf("_________4. save memory state___________________________________________________\n");
 	printf("_________5. load memory from file ______________________________________________\n");
-	printf("_________6._____________________________________________________________________\n");
-	printf("_________7._____________________________________________________________________\n");
-	printf("_________8._____________________________________________________________________\n");
+	printf("_________6. select stepping mode________________________________________________\n");
+	printf("_________7. assemble code from file_____________________________________________\n");
+	printf("_________8. begin program execution_____________________________________________\n");
 	printf("_________9. Exit Sim____________________________________________________________\n");
 }
 
 void interfacerunning() //running interface for sim
 {
-	printf("current adress: %i______________________________________________________________\n", currentaddress);
+	printf("current adress: %i                                                              \n", currentaddress);
+	printf("                                                                                \n");
+	printf("________load__|__write__|__return__|__jump__|__halt__|__alu__|__op0__|__op1_____\n");
+	printf("FLAGS:    %i       %i         %i         %i         %i        %i       %i       %i         \n", loadflag, writeflag, returnflag, jumpflag, haltflag, aluflag, op0loadflag, op1loadflag);
 	printf("________________________________________________________________________________\n");
-	printf("________load__|__write__|__return__|__jump__|__halt_____________________________\n");
-	printf("FLAGS: ___%i_______%i_________%i_________%i_____%i________________________________\n", loadflag, writeflag, returnflag, jumpflag, haltflag);
+	printf("Memory Value: %i                                                                \n", memory[currentaddress]);
 	printf("________________________________________________________________________________\n");
-	printf("__________INSLOAD__|__DATLOAD__|__ADRLOAD_______________________________________\n");
-	printf("REQUESTS:_______________________________________________________________________\n");
 	printf("________________________________________________________________________________\n");
-	printf("Active Register: _%i____________________________________________________________\n", operator0); //0 - 15
-	printf("Register Value: __%i____________________________________________________________\n", dataregister[operator0]); //content of active/selected register
+	printf("Register:  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15      \n"); //0 - 15
+	printf("Value:     %i | %i | %i | %i | %i | %i | %i | %i | %i | %i | %i  | %i  | %i  | %i  | %i  | %i      \n", dataregister[0], dataregister[1], dataregister[2], dataregister[3], dataregister[4], dataregister[5], dataregister[6], dataregister[7], dataregister[8], dataregister[9], dataregister[10], dataregister[11], dataregister[12], dataregister[13], dataregister[14], dataregister[15]); //content of active/selected register
 	printf("________________________________________________________________________________\n");
-	printf("Instruction: ___%i%i%i__________________________________________________________\n", binary[2], binary[1], binary[0]);
-	printf("INS Decode: ____________________________________________________________________\n");
+	//printf("Instruction:    %i                                                              \n", &binary);
+	printf("OPERATORS: %i (OP0)  %i (OP1)__________________________________________________\n", operator0, operator1);
+	printf("ALU: r0_NAND_r%i__->__r%i________________________________________________________\n", operator1, operator0);
 	printf("________________________________________________________________________________\n");
-	printf("?Adressbuffer:__________________________________________________________________\n");
 	printf("________________________________________________________________________________\n");
-	printf("?Return Register:_______________________________________________________________\n");
+	printf("________________________________________________________________________________\n");
+	printf("________________________________________________________________________________\n");
 	printf("________________________________________________________________________________\n");
 	printf("________________________________________________________________________________\n");
 	printf("________________________________________________________________________________\n");
