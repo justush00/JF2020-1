@@ -1,0 +1,17 @@
+load new instruction t1
+decode instruction t2
+execute instruction t3
+
+load instruction (t1 + t2 + t3 + t4)
+load ins t1
+decode t2
+execute t3
+___________________ //next adress
+load value to reg t4
+
+alu instruction (t1 + t2 + t3 + t5 + t6)
+load new instruction t1
+decode instruction t2
+execute instruction t3
+ALU working t5
+save result t6

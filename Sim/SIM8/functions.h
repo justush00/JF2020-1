@@ -78,7 +78,7 @@ int running()
 		if(returnflag == 1  && loadflag == 1)
 		{
 			printf("ERROR! Trying to load from ALU and RAM.\n");
-			break; 
+			break;
 			}
 		else if(returnflag == 1)
 		{
@@ -93,16 +93,16 @@ int running()
 			datloadrequest = 1;
 			dataregister[operator0] = memory[currentaddress]; //only 4 bits of operator 0 used
 			//printf("Data Loaded!\n");
-			datloadrequest = 0;	
+			datloadrequest = 0;
 			loadflag = 0;
-			
+
 		}
 		else if(loadflag == 0)
 		{
 			if(op0loadflag == 1 && op1loadflag == 1)
 			{
 				printf("ERROR! Trying to load two operators at once.\n");
-				break; 
+				break;
 			}
 			else if(op0loadflag == 1)
 			{
@@ -112,7 +112,7 @@ int running()
 			}
 			else if(op1loadflag == 1)
 			{
-				operator1 = memory[currentaddress];	
+				operator1 = memory[currentaddress];
 				printf("operator1 ist geladen\n");
 				op1loadflag = 0;
 			}
@@ -240,12 +240,12 @@ int running()
 					//halts the cpu
 					haltflag = 1;
 				}
-			}			
+			}
 		}
 
 
-		//if(aluflag)	
-		//Current Processing of Memory is finished, jump/change to next one 
+		//if(aluflag)
+		//Current Processing of Memory is finished, jump/change to next one
 		//adrloadrequest
 		if(insloadrequest == 0 || datloadrequest == 0)
 		{
@@ -270,7 +270,7 @@ int running()
 			}
 			if(SMA == 2)
 			{
-				sleep(1);				
+				sleep(1);
 			}
 
 				if(haltflag == 0)

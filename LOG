@@ -7,3 +7,8 @@
 		-process execution
 		-data handling
 		-memory architecture
+
+07.09.2020
+	created new development path SimDEVEL09 (09 for September)
+	adjusted functions.h, especially running()
+	cleaned up

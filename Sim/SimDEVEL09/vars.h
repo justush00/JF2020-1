@@ -1,27 +1,37 @@
-//21.06.2020
+//01.07.2020
 #ifndef VARS_H
 #define VARS_H
 #define bandwidth 8 //channel width
 
 //switch case var
+int SMA=1; //Stepping Mode
 char option = 0;
 int globala = 0;
 
+int i = 0;
+
+int n = 0; //placeholder for instructionregister
+
+int operator0 = 0;
+int operator1 = 0;
 
 //currentaddress
-//bool currentaddress[64];
-bool currentaddress[bandwidth];
+int currentaddress;
+bool binary[4] = {0,0,0,0};
 
+
+int aluout;
 //Memory Vars
 //bool memory64[64][255]; //255 adresses of 64bit memory
 //bool memory32[32][255];
 //bool memory16[16][255];
-bool memory[bandwidth][255];
+int memory[255];
 //bool memory4[4][255];
 
 //Register
-bool instructionregister0[64];
-bool dataregister0[64]; //aluin0
+int instructionregister0;
+int dataregister[16]; //0 alulin0
+/*bool dataregister0[64]; //aluin0
 bool dataregister1[64];
 bool dataregister2[64];
 bool dataregister3[64];
@@ -37,13 +47,16 @@ bool dataregister12[64];
 bool dataregister13[64];
 bool dataregister14[64];
 bool dataregister15[64]; //adressreturn
-
+*/
 //Flags
 bool loadflag; //1: load from memory
 bool writeflag; //1: write to memory
 bool returnflag; //return from ALU
 bool jumpflag; //flag for memoryjumps
-//bool haltflag; //halts CPU
+bool aluflag; //flag for loops utilizes A=B Output from 74181
+bool op0loadflag; //1: load operator0 from memory -> makes full 8 Bit instructions/operators possible
+bool op1loadflag;
+bool haltflag = 0; //halts CPU, almost like clock in real CPU
 
 //Requests
 bool insloadrequest; //request for refreshing instructionregister
