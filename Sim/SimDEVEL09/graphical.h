@@ -97,8 +97,8 @@ void goodbye()
 int menu()
 {
 	option = 0;
-	cls();
-	interfacehalt();
+	//cls();
+	//interfacehalt();
 	printf("USER INPUT: ");
 	scanf(" %c", &option);
 	switch(option)

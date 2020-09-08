@@ -11,7 +11,7 @@
 #include "functions.h"
 
 int main()
-{ 
+{
 	globala = 0;
 	do{
 		globala = 0;
@@ -108,7 +108,7 @@ int main()
 		3. Clockcycle/trigger
 		4. ADRLOADREQUEST
 
-	
+
 
 
 	*/
@@ -125,4 +125,3 @@ int main()
 	b2h64(&mem[0], &ar[0]);
 	printf("HEXCODE is: %X%X%X%X%X%X%X%X\n", ar[0], ar[1], ar[2], ar[3], ar[4], ar[5], ar[6], ar[7]);
 */
-

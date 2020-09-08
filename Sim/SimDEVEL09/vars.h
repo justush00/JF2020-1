@@ -1,7 +1,22 @@
 //01.07.2020
 #ifndef VARS_H
 #define VARS_H
-#define bandwidth 8 //channel width
+//#define bandwidth 8 //channel width
+
+//assemble
+int ins[4];
+int srcz[4];
+int srco[4];
+int dest[4];
+
+//decoding
+size_t m = 4;
+int nop[4] = {0,0,0,0};
+int load[4] = {1,0,0,0};
+int store[4] = {0,1,0,0};
+int jump[4] = {1,1,0,0};
+int nand[4] = {0,0,1,0};
+int hlt[4] = {1,1,1,1};
 
 //switch case var
 int SMA=1; //Stepping Mode
@@ -17,7 +32,8 @@ int operator1 = 0;
 
 //currentaddress
 int currentaddress;
-bool binary[4] = {0,0,0,0};
+int binary[4] = {0,0,0,0};
+int insregb[16];
 
 
 int aluout;

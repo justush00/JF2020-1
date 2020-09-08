@@ -1,5 +1,8 @@
-#ifndef FILE_H
-#define FILE_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <string.h>
 
 int powe( int a, int b)
 {
@@ -12,57 +15,7 @@ int powe( int a, int b)
   return c;
 }
 
-void savemem()
-{
-  printf("Please enter a name (.mem): ");
-  char name[20];
-  scanf("%s\0", name);
-  FILE *out;
-  out = fopen(name, "w+" );
-  if (out == NULL)
-  {
-      printf("Sorry, file does not exist.\n");
-      exit(EXIT_FAILURE);
-  }
-  for(int i=0; i < 255; i++)
-  {
-    fprintf(out, "%i\n", memory[i]);
-  }
-  fclose(out);
-}
-
-void loadmem()
-{
-  printf("Please enter a name (.mem): ");
-  char name[20];
-  char arr[255];
-  scanf("%s\0", name);
-  FILE *in;
-  in = fopen(name, "r" );
-  if (in == NULL)
-  {
-      printf("Sorry, file does not exist.\n");
-      exit(EXIT_FAILURE);
-  }
-  for(int i=0; i < 255; i++)
-  {
-    fscanf(in, "%s\n", &arr[i]);
-    memory[i] = atoi(&arr[i]);
-  }
-  fclose(in);
-}
-
-void initmem()
-{
-  for(int a = 0; a < 255; a++)
-  {
-    printf("DEBUG1: %i\n", a);
-    memory[a] = 0;
-  }
-  savemem();
-}
-
-void assemble()
+int main()
 {
   FILE* in;
   FILE* out;
@@ -72,23 +25,22 @@ void assemble()
   char* SRC1 = malloc(1);
   char* DEST = malloc(1);
 
-  printf("Please enter the name of the source (.asm): ");
+  //printf("Please enter the name of the source (.asm): ");
   char source[20];
-  scanf("%s\0", source);
+  //scanf("%s\0", source);
 
-  printf("Please enter the name of the target (.mem): ");
+  //printf("Please enter the name of the target (.mem): ");
   char target[20];
-  scanf("%s\0", target);
+  //scanf("%s\0", target);
 
   in = fopen("test.asm", "r");
+  out = fopen("./test.mem", "w+");
 
   if (in == NULL)
   {
       printf("Sorry, sourcefile does not exist.\n");
       exit(EXIT_FAILURE);
   }
-
-  out = fopen("./test.mem", "w+");
 
   int ins;
   int src0;
@@ -105,6 +57,9 @@ void assemble()
 
   for(int c = 0; c < 255; c++)
   {
+    //INS = 0;
+    //OP0 = 0;
+    //OP1 = 0;
     fscanf(in, "%s %s %s %s\n", INS, SRC0, SRC1, DEST);
     //printf("%s %s %s %s\n", INS, SRC0, SRC1, DEST);
 
@@ -112,7 +67,7 @@ void assemble()
         {
           ins = 0;
         }
-    if(strcmp(INS, "loa") == 0)
+    if(strcmp(INS, "loa") == 0) //op0 sind hier die zu ladenden daten
         {
           ins = 1;
         }
@@ -206,4 +161,3 @@ void assemble()
   fclose(in);
   fclose(out);
 }
-#endif
