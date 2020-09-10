@@ -56,7 +56,7 @@ void initmem()
 {
   for(int a = 0; a < 255; a++)
   {
-    printf("DEBUG1: %i\n", a);
+    //printf("DEBUG1: %i\n", a);
     memory[a] = 0;
   }
   savemem();
@@ -80,7 +80,7 @@ void assemble()
   char target[20];
   scanf("%s\0", target);
 
-  in = fopen("test.asm", "r");
+  in = fopen(source, "r");
 
   if (in == NULL)
   {
@@ -88,7 +88,7 @@ void assemble()
       exit(EXIT_FAILURE);
   }
 
-  out = fopen("./test.mem", "w+");
+  out = fopen(target, "w+");
 
   int ins;
   int src0;

@@ -3,6 +3,11 @@
 #define VARS_H
 //#define bandwidth 8 //channel width
 
+//bin2dec running()
+int src0;
+int src1;
+int destr;
+
 //assemble
 int ins[4];
 int srcz[4];
@@ -66,6 +71,7 @@ bool dataregister15[64]; //adressreturn
 */
 //Flags
 bool loadflag; //1: load from memory
+bool prewriteflag; //prebuffer to writeflag... refer to quicktest10092020withTMU
 bool writeflag; //1: write to memory
 bool returnflag; //return from ALU
 bool jumpflag; //flag for memoryjumps
