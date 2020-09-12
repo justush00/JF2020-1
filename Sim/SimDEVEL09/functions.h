@@ -18,7 +18,7 @@ int running()
 {
 	do{
 		//1. Daten / ALU laden, wenn vorheriger Befehl dies verlangt (Flag)
-		printf("%i: ", currentaddress);
+		printf("\n%i: ", currentaddress);
 		if(loadflag == 1)
 		{
 			dataregister[destr] = memory[currentaddress];
@@ -104,57 +104,8 @@ int running()
 			}
 			if(! memcmp(binary, nand, m * sizeof(int)))
 			{
-				printf("nand executed!\n"); //nop
-				/*
-				OLD CODE FOR NAND Function _START
-				*/
-				int a = dataregister[src0];
-				bool ba[8]; //binary a
-				for(i = 0; i<8; i++)
-				{
-					ba[i] = 0;
-				}
-				for(i = 0; a > 0; i++)
-				{
-					ba[i] = a % 2;
-					a = a / 2;
-				}
-				for(i = 7; i >= 0; i--)
-				{
-					printf("%i", ba[i]);
-				}
-				printf("\n");
-				int b = dataregister[src1];
-				bool bb[8]; //binary b
-				for(i = 0; i<8; i++)
-				{
-					bb[i] = 0;
-				}
-				for(i = 0; b > 0; i++)
-				{
-					bb[i] = b % 2;
-					b = b / 2;
-					}
-				for(i = 7; i >= 0; i--)
-				{
-					printf("%i", bb[i]);
-				}
-				printf("\n_________\n");
-				bool br[8]; // binary result
-				for(i = 0; i < 8; i++)
-				{
-					br[i] = (!ba[i]) && (!bb[i]);
-				}
-				for(i = 7; i >= 0; i--)
-				{
-					printf("%i", br[i]);
-				}
-				printf("\n");
-				int r = 1 * br[0] + 2 * br[1] + 4 * br[2] + 8 * br[3] + 16 * br[4] + 32 * br[5] + 64 * br[6] + 128 * br[7];
-				printf("%i\n",r);
-				/*
-				OLD CODE FOR NAND Function _END
-				*/
+				printf("add executed!\n"); //nop
+				int r = dataregister[src0] + dataregister[src1];
 				aluout = r;
 				aluflag = 1;
 			}

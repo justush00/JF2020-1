@@ -67,7 +67,7 @@ int main()
 		if(globala == 5)
 		{
 			loadmem();
-			/*for(int i=0; i < 255; i++)
+			/*for(int i=0; i < 20; i++)
   			{
     			printf("%i\n", memory[i]);
   			}*/
@@ -75,8 +75,16 @@ int main()
 		}
 		if(globala == 6)
 		{
-			printf("Enable Stepping Mode? 0 fast, 1 step by step, 2 1 sec: ");
-			scanf("%i", &SMA);
+			int start, end;
+			printf("start: ");
+			scanf("%i", &start);
+			printf("\nend: ");
+			scanf("%i", &end);
+			printf("\n");
+			for(int i=start; i < end; i++)
+  			{
+    			printf("%i\n", memory[i]);
+  			}
 		}
 		if(globala == 7)
 		{
