@@ -12,3 +12,7 @@
 	created new development path SimDEVEL09 (09 for September)
 	adjusted functions.h, especially running()
 	cleaned up
+
+20.10.2020
+	new idea of IPC (interrupt process controller)
+	IPC gets Interrupt -> IPC stores old/ current adress -> IPC sets new adress for CPU -> CPU executes Interrupt-Handling  

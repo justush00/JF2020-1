@@ -8,7 +8,7 @@ str 2 0 0
 nop 0 0 0
 nop 0 0 0
 nop 0 0 0
-nop 0 0 0
+hlt 0 0 0
 nop 0 0 0
 nop 0 0 0
 nop 0 0 0

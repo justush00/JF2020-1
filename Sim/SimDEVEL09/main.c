@@ -15,6 +15,9 @@ int main()
 	globala = 0;
 	do{
 		globala = 0;
+		//----------------------------------
+		//insert readout of dataregister
+		//----------------------------------
 		if(globala == 0)
 		{
 			menu();
@@ -26,7 +29,18 @@ int main()
 		}
 		if(globala == 2)
 		{
-			printf("DR0:%i\n", dataregister[0]);
+			printf("which adress?: ");
+			int in, value;
+			scanf("%i", &in);
+			if(in > 254)
+			{
+				printf("Adress does not exist! 0 - 254\n");
+				sleep (2);
+				break;
+			}
+			printf("%i\n", memory[in]);
+
+			/*printf("DR0:%i\n", dataregister[0]);
 			printf("DR1:%i\n", dataregister[1]);
 			printf("DR2:%i\n", dataregister[2]);
 			printf("DR3:%i\n", dataregister[3]);
@@ -43,7 +57,7 @@ int main()
 			printf("DR14:%i\n", dataregister[14]);
 			printf("DR15:%i\n", dataregister[15]);
 			scanf("%i", &i);
-			//initmem();
+			*///initmem();
 		}
 		if(globala == 3)
 		{
@@ -98,7 +112,9 @@ int main()
 
 	if(globala == 9)
 	{
-		goodbye();
+		currentaddress = 0;
+		haltflag = 0;
+		main();
 	}
 
 }

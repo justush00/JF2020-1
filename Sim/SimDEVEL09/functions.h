@@ -81,30 +81,31 @@ int running()
 			src1: operator1; Instruktionsabhaengig
 			dest: Zielregister
 			*/
+			printf("%c",binary[0]);
 
 			if(! memcmp(binary, nop, m * sizeof(int)))
 			{
-				printf("nop executed!\n"); //nop
+				printf("nop executed!"); //nop
 				//printf("DEBIG: %i %i %i\n", src0, src1, destr);
 			}
 			if(! memcmp(binary, load, m * sizeof(int)))
 			{
 				loadflag = 1;
-				printf("load executed!\n"); //nop
+				printf("load executed!"); //nop
 			}
 			if(! memcmp(binary, store, m * sizeof(int)))
 			{
-				printf("store executed!\n"); //nop
+				printf("store executed!"); //nop
 				prewriteflag = 1;
 			}
 			if(! memcmp(binary, jump, m * sizeof(int)))
 			{
-				printf("jump executed!\n"); //nop
+				printf("jump executed!"); //nop
 				jumpflag = 1;
 			}
 			if(! memcmp(binary, nand, m * sizeof(int)))
 			{
-				printf("add executed!\n"); //nop
+				printf("add executed!"); //nop
 				int r = dataregister[src0] + dataregister[src1];
 				aluout = r;
 				aluflag = 1;

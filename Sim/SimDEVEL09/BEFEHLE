@@ -1,0 +1,9 @@
+Befehle Stand: 20.10.2020
+Instructions as of 20.10.2020
+refer to file.h for further info
+
+nop = no operation; in memory 0
+loa = load value from ram to register; in memory 1; requires DEST
+str = store register value in next memory adress;  in memory 2; requires SRC0
+jmp = jump adress loaded in... ; in memory 3
+alu = nand; requires SRC0, SRC1, dest
