@@ -21,6 +21,9 @@ int load[4] = {1,0,0,0};
 int store[4] = {0,1,0,0};
 int jump[4] = {1,1,0,0};
 int nand[4] = {0,0,1,0};
+int jeq[4] = {1,0,1,0};
+int jle[4] = {0,1,1,0};
+int jge[4] = {1,1,1,0};
 int hlt[4] = {1,1,1,1};
 
 //switch case var

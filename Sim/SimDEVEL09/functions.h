@@ -18,20 +18,24 @@ int running()
 {
 	do{
 		//1. Daten / ALU laden, wenn vorheriger Befehl dies verlangt (Flag)
+		jumpflag = 0;
 		printf("\n%i: ", currentaddress);
 		if(loadflag == 1)
 		{
+			printf("DBG: LOADFLAG\n mem: %i\n destr: %i \n dr: %i\n", memory[currentaddress], destr, dataregister[destr]);
 			dataregister[destr] = memory[currentaddress];
 			//nach erfolgreichem Laden, muessen die Flags/?Instruktionsregister zurueckgesetzt werden
 			loadflag = 0;
 		}
 		else if(aluflag == 1)
 		{
+			printf("DBG: ALUFLAG\n");
 			dataregister[destr] = aluout;
 			aluflag = 0;
 		}
 		else if(writeflag == 1)
 		{
+			printf("DBG: WRITEFLAG\n");
 			memory[currentaddress] = dataregister[src0];
 			writeflag = 0;
 			prewriteflag = 0;
@@ -81,7 +85,6 @@ int running()
 			src1: operator1; Instruktionsabhaengig
 			dest: Zielregister
 			*/
-			printf("%c",binary[0]);
 
 			if(! memcmp(binary, nop, m * sizeof(int)))
 			{
@@ -110,6 +113,31 @@ int running()
 				aluout = r;
 				aluflag = 1;
 			}
+			if(! memcmp(binary, jeq, m * sizeof(int)))
+			{
+				printf("equal jump executed!"); //nop
+				if(dataregister[src0] == dataregister[src1])
+				{
+					jumpflag = 1;
+				}
+
+			}
+			if(! memcmp(binary, jle, m * sizeof(int)))
+			{
+				printf("less jump executed!"); //nop
+				if(dataregister[src0] < dataregister[src1])
+				{
+					jumpflag = 1;
+				}
+			}
+			if(! memcmp(binary, jge, m * sizeof(int)))
+			{
+				printf("greater jump executed!"); //nop
+				if(dataregister[src0] > dataregister[src1])
+				{
+					jumpflag = 1;
+				}
+			}
 			if(! memcmp(binary, hlt, m * sizeof(int)))
 			{
 				printf("halted!\n"); //nop
@@ -123,7 +151,7 @@ int running()
 		}
 
 
-
+		//scanf("%i", &i); //DBG Stepping
 
 		//naechste Adresse laden
 		if(jumpflag == 1)

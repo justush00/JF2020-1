@@ -125,14 +125,24 @@ void assemble()
         {
           ins = 3;
         }
-    if(strcmp(INS, "alu") == 0)
+    if(strcmp(INS, "add") == 0) //placeholder for alu
         {
-          //bitwise adding
           ins = 4;
         }
-    if(strcmp(INS, "cmp") == 0)
+
+    if(strcmp(INS, "jeq") == 0)
         {
           ins = 5;
+        }
+
+    if(strcmp(INS, "jle") == 0)
+        {
+          ins = 6;
+        }
+
+    if(strcmp(INS, "jge") == 0)
+        {
+          ins = 7;
         }
 
     if(strcmp(INS, "hlt") == 0)
