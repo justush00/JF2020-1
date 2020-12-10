@@ -15,4 +15,9 @@
 
 20.10.2020
 	new idea of IPC (interrupt process controller)
-	IPC gets Interrupt -> IPC stores old/ current adress -> IPC sets new adress for CPU -> CPU executes Interrupt-Handling  
+	IPC gets Interrupt -> IPC stores old/ current adress -> IPC sets new adress for CPU -> CPU executes Interrupt-Handling
+
+10.12.2020
+	planned to builed CPU in IC or FPGA -> scrapped
+	further simulation of CPU in software and with ARDUINO + RAM (!Working on idea)
+	
