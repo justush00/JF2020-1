@@ -78,6 +78,7 @@ int running()
 			binary[1] = insregb[1];
 			binary[2] = insregb[2];
 			binary[3] = insregb[3];
+			binary[4] = insregb[4];
 			//befehl verstehen/decoden (ins src0 src1 dest)
 			/*
 			ins: Instruktion
@@ -106,10 +107,38 @@ int running()
 				printf("jump executed!"); //nop
 				jumpflag = 1;
 			}
-			if(! memcmp(binary, nand, m * sizeof(int)))
+			if(! memcmp(binary, add, m * sizeof(int)))
 			{
 				printf("add executed!"); //nop
 				int r = dataregister[src0] + dataregister[src1];
+				aluout = r;
+				aluflag = 1;
+			}
+			if(! memcmp(binary, shft, m * sizeof(int)))
+			{
+				printf("shift executed!"); //nop
+				int r = dataregister[src0] << 1;
+				aluout = r;
+				aluflag = 1;
+			}
+			if(! memcmp(binary, nand, m * sizeof(int)))
+			{
+				printf("nand executed!"); //nop
+				int r = !(dataregister[src0] && dataregister[src1]);
+				aluout = r;
+				aluflag = 1;
+			}
+			if(! memcmp(binary, not, m * sizeof(int)))
+			{
+				printf("not executed!"); //nop
+				int r = !dataregister[src0];
+				aluout = r;
+				aluflag = 1;
+			}
+			if(! memcmp(binary, xor, m * sizeof(int)))
+			{
+				printf("xor executed!"); //nop
+				int r = dataregister[src0] ^ dataregister[src1];
 				aluout = r;
 				aluflag = 1;
 			}

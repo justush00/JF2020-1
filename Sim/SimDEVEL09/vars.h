@@ -9,22 +9,26 @@ int src1;
 int destr;
 
 //assemble
-int ins[4];
+int ins[5];
 int srcz[4];
 int srco[4];
 int dest[4];
 
 //decoding
-size_t m = 4;
-int nop[4] = {0,0,0,0};
-int load[4] = {1,0,0,0};
-int store[4] = {0,1,0,0};
-int jump[4] = {1,1,0,0};
-int nand[4] = {0,0,1,0};
-int jeq[4] = {1,0,1,0};
-int jle[4] = {0,1,1,0};
-int jge[4] = {1,1,1,0};
-int hlt[4] = {1,1,1,1};
+size_t m = 5; //2^5/32 Ops possible
+int nop[5] = {0,0,0,0,0};
+int load[5] = {1,0,0,0,0};
+int store[5] = {0,1,0,0,0};
+int jump[5] = {1,1,0,0,0};
+int add[5] = {0,0,1,0,0};
+int shft[5] = {1,0,1,0,0};
+int nand[5] = {0,1,1,0,0};
+int not[5] = {1,1,1,0,0};
+int xor[5] = {0,0,0,1,0};
+int jeq[5] = {1,0,0,1,0};
+int jle[5] = {0,1,0,1,0};
+int jge[5] = {1,1,0,1,0};
+int hlt[5] = {1,1,1,1,1};
 
 //switch case var
 int SMA=1; //Stepping Mode
@@ -40,8 +44,8 @@ int operator1 = 0;
 
 //currentaddress
 int currentaddress;
-int binary[4] = {0,0,0,0};
-int insregb[16];
+int binary[5] = {0,0,0,0,0};
+int insregb[20];
 
 
 int aluout;

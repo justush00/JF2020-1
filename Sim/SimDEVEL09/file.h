@@ -96,11 +96,11 @@ void assemble()
   int dest;
 
   int dec;
-  int insb[4];
+  int insb[5];
   int src0b[4];
   int src1b[4];
   int destb[4];
-  int full[16];
+  int full[20];
   int n;
 
   for(int c = 0; c < 255; c++)
@@ -125,29 +125,44 @@ void assemble()
         {
           ins = 3;
         }
-    if(strcmp(INS, "add") == 0) //placeholder for alu
+    if(strcmp(INS, "add") == 0)
         {
           ins = 4;
         }
-
-    if(strcmp(INS, "jeq") == 0)
+    if(strcmp(INS, "lsh") == 0)
         {
           ins = 5;
+        }
+    if(strcmp(INS, "nnd") == 0)
+        {
+          ins = 6;
+        }
+    if(strcmp(INS, "not") == 0)
+        {
+          ins = 7;
+        }
+    if(strcmp(INS, "xor") == 0)
+        {
+          ins = 8;
+        }
+    if(strcmp(INS, "jeq") == 0)
+        {
+          ins = 9;
         }
 
     if(strcmp(INS, "jle") == 0)
         {
-          ins = 6;
+          ins = 10;
         }
 
     if(strcmp(INS, "jge") == 0)
         {
-          ins = 7;
+          ins = 11;
         }
 
     if(strcmp(INS, "hlt") == 0)
         {
-          ins = 15;
+          ins = 31;
           printf("DBG");
         }
 
@@ -185,26 +200,31 @@ void assemble()
       destb[n] = dest % 2;
       dest = dest / 2;
     }
+
     full[0] = insb[0];
     full[1] = insb[1];
     full[2] = insb[2];
     full[3] = insb[3];
-    full[4] = src0b[0];
-    full[5] = src0b[1];
-    full[6] = src0b[2];
-    full[7] = src0b[3];
-    full[8] = src1b[0];
-    full[9] = src1b[1];
-    full[10] = src1b[2];
-    full[11] = src1b[3];
-    full[12] = destb[0];
-    full[13] = destb[1];
-    full[14] = destb[2];
-    full[15] = destb[3];
+    full[4] = insb[4];
+    full[5] = src0b[0];
+    full[6] = src0b[1];
+    full[7] = src0b[2];
+    full[8] = src0b[3];
+    full[9] = src1b[0];
+    full[10] = src1b[1];
+    full[11] = src1b[2];
+    full[12] = src1b[3];
+    full[13] = destb[0];
+    full[14] = destb[1];
+    full[15] = destb[2];
+    full[16] = destb[3];
+    full[17] = 0;
+    full[18] = 0;
+    full[19] = 0;
 
     dec = 0;
 
-    for(n = 0; n < 16; n++)
+    for(n = 0; n < 20; n++)
     {
       //printf("%i + (%i * %i)\n", dec, full[n], powe(2, n));
       dec = dec + (full[n] * powe(2, n));
