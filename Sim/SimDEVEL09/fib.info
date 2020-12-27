@@ -1,0 +1,6 @@
+r0: start #1
+r1: start #2
+r2: REPEATS; comparison value
+r3: REPEATS is; increments
+r4: ONE
+r5: NULL

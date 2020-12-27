@@ -47,31 +47,34 @@ int running()
 			src0 = 0;
 			src1 = 0;
 			destr = 0;
-			for(n = 0; n < 16; n++)
+			for(n = 0; n < 20; n++)
 		  {
 		    insregb[n] = 0;
 			}
+			printf("\ndebug: ");
 			for(n = 0; instructionregister0 > 0; n++)
 		  {
 		    insregb[n] = instructionregister0 % 2;
 		    instructionregister0 = instructionregister0 / 2;
+				printf("%i", insregb[n]);
 		  }
-
+			printf("\n");
 			//src0 conversion bin to dec
-		  for(n = 4; n < 8; n++)
+		  for(n = 5; n < 9; n++)
 		  {
-		    src0 = src0 + (insregb[n] * powe(2, n-4));
+		    src0 = src0 + (insregb[n] * powe(2, n-5));
 		  }
 			//src1 bin to dec
-			for(n = 8; n < 12; n++)
+			for(n = 9; n < 13; n++)
 		  {
-		    src1 = src1 + (insregb[n] * powe(2, n-8));
+		    src1 = src1 + (insregb[n] * powe(2, n-9));
 		  }
 			//dest bin to dec
-			for(n = 12; n < 16; n++)
+			for(n = 13; n < 17; n++)
 		  {
-		    destr = destr + (insregb[n] * powe(2, n-12));
+		    destr = destr + (insregb[n] * powe(2, n-13));
 		  }
+			printf("\ndebug1: %i, %i, %i\n", src0, src1, destr);
 
 			//Instruction:
 			binary[0] = insregb[0];
@@ -89,62 +92,62 @@ int running()
 
 			if(! memcmp(binary, nop, m * sizeof(int)))
 			{
-				printf("nop executed!"); //nop
+				printf("nop executed!");
 				//printf("DEBIG: %i %i %i\n", src0, src1, destr);
 			}
 			if(! memcmp(binary, load, m * sizeof(int)))
 			{
 				loadflag = 1;
-				printf("load executed!"); //nop
+				printf("load executed!");
 			}
 			if(! memcmp(binary, store, m * sizeof(int)))
 			{
-				printf("store executed!"); //nop
+				printf("store executed!");
 				prewriteflag = 1;
 			}
 			if(! memcmp(binary, jump, m * sizeof(int)))
 			{
-				printf("jump executed!"); //nop
+				printf("jump executed!");
 				jumpflag = 1;
 			}
 			if(! memcmp(binary, add, m * sizeof(int)))
 			{
-				printf("add executed!"); //nop
+				printf("add executed!");
 				int r = dataregister[src0] + dataregister[src1];
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, shft, m * sizeof(int)))
 			{
-				printf("shift executed!"); //nop
+				printf("shift executed!");
 				int r = dataregister[src0] << 1;
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, nand, m * sizeof(int)))
 			{
-				printf("nand executed!"); //nop
+				printf("nand executed!");
 				int r = !(dataregister[src0] && dataregister[src1]);
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, not, m * sizeof(int)))
 			{
-				printf("not executed!"); //nop
+				printf("not executed!");
 				int r = !dataregister[src0];
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, xor, m * sizeof(int)))
 			{
-				printf("xor executed!"); //nop
+				printf("xor executed!");
 				int r = dataregister[src0] ^ dataregister[src1];
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, jeq, m * sizeof(int)))
 			{
-				printf("equal jump executed!"); //nop
+				printf("equal jump executed!");
 				if(dataregister[src0] == dataregister[src1])
 				{
 					jumpflag = 1;
@@ -153,7 +156,7 @@ int running()
 			}
 			if(! memcmp(binary, jle, m * sizeof(int)))
 			{
-				printf("less jump executed!"); //nop
+				printf("less jump executed!");
 				if(dataregister[src0] < dataregister[src1])
 				{
 					jumpflag = 1;
@@ -161,7 +164,7 @@ int running()
 			}
 			if(! memcmp(binary, jge, m * sizeof(int)))
 			{
-				printf("greater jump executed!"); //nop
+				printf("greater jump executed!");
 				if(dataregister[src0] > dataregister[src1])
 				{
 					jumpflag = 1;
@@ -169,7 +172,7 @@ int running()
 			}
 			if(! memcmp(binary, hlt, m * sizeof(int)))
 			{
-				printf("halted!\n"); //nop
+				printf("halted!\n");
 				haltflag = 1;
 			}
 

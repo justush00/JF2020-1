@@ -39,25 +39,6 @@ int main()
 				break;
 			}
 			printf("%i\n", memory[in]);
-
-			/*printf("DR0:%i\n", dataregister[0]);
-			printf("DR1:%i\n", dataregister[1]);
-			printf("DR2:%i\n", dataregister[2]);
-			printf("DR3:%i\n", dataregister[3]);
-			printf("DR4:%i\n", dataregister[4]);
-			printf("DR5:%i\n", dataregister[5]);
-			printf("DR6:%i\n", dataregister[6]);
-			printf("DR7:%i\n", dataregister[7]);
-			printf("DR8:%i\n", dataregister[8]);
-			printf("DR9:%i\n", dataregister[9]);
-			printf("DR10:%i\n", dataregister[10]);
-			printf("DR11:%i\n", dataregister[11]);
-			printf("DR12:%i\n", dataregister[12]);
-			printf("DR13:%i\n", dataregister[13]);
-			printf("DR14:%i\n", dataregister[14]);
-			printf("DR15:%i\n", dataregister[15]);
-			scanf("%i", &i);
-			*///initmem();
 		}
 		if(globala == 3) //readout regs
 		{

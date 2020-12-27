@@ -1,9 +1,17 @@
-Befehle Stand: 20.10.2020
-Instructions as of 20.10.2020
+Befehle Stand: 27.12.2020
+Instructions as of 27.12.2020
 refer to file.h for further info
 
 nop = no operation; in memory 0
 loa = load value from ram to register; in memory 1; requires DEST
 str = store register value in next memory adress;  in memory 2; requires SRC0
 jmp = jump adress loaded in... ; in memory 3
-alu = nand; requires SRC0, SRC1, dest
+add = add; requires SRC0, SRC1, dest
+lsh = left shift; requires SRC0, dest
+nnd = nand; SRC0, SRC1, dest
+not = not; SRC0, dest
+xor = xor; SRC0, SRC1, dest
+jeq = jump if equal; SRC0, SRC1
+jle = jump if less; SRC0, SRC1
+jge = jump if greater; SRC0, SRC1
+hlt = halt

@@ -178,27 +178,36 @@ void assemble()
       src1b[n] = 0;
       destb[n] = 0;
     }
+    insb[4] = 0;
 
     //conversion dec to bin
+    printf("\naINS: ");
     for(n = 0; ins > 0; n++)
     {
       insb[n] = ins % 2;
       ins = ins / 2;
+      printf("%i", insb[n]);
     }
+    printf("\naSRC0: ");
     for(n = 0; src0 > 0; n++)
     {
       src0b[n] = src0 % 2;
       src0 = src0 / 2;
+      printf("%i", src0b[n]);
     }
+    printf("\naSRC1: ");
     for(n = 0; src1 > 0; n++)
     {
       src1b[n] = src1 % 2;
       src1 = src1 / 2;
+      printf("%i", src1b[n]);
     }
+    printf("\nDEST: ");
     for(n = 0; dest > 0; n++)
     {
       destb[n] = dest % 2;
       dest = dest / 2;
+      printf("%i", destb[n]);
     }
 
     full[0] = insb[0];
