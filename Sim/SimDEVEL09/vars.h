@@ -1,7 +1,6 @@
 //01.07.2020
 #ifndef VARS_H
 #define VARS_H
-//#define bandwidth 8 //channel width
 
 //bin2dec running()
 int src0;
@@ -28,6 +27,7 @@ int xor[5] = {0,0,0,1,0};
 int jeq[5] = {1,0,0,1,0};
 int jle[5] = {0,1,0,1,0};
 int jge[5] = {1,1,0,1,0};
+int mtgl[5] = {0,0,1,1,0};
 int hlt[5] = {1,1,1,1,1};
 
 //switch case var
@@ -50,32 +50,15 @@ int insregb[20];
 
 int aluout;
 //Memory Vars
-//bool memory64[64][255]; //255 adresses of 64bit memory
-//bool memory32[32][255];
-//bool memory16[16][255];
-int memory[255];
-//bool memory4[4][255];
+int memory[255]; //memory interface for cpu
+int pmemory[255]; //program memory for controller
+int tmemory; //terminal memory for controller
+
 
 //Register
 int instructionregister0;
-int dataregister[16]; //0 alulin0
-/*bool dataregister0[64]; //aluin0
-bool dataregister1[64];
-bool dataregister2[64];
-bool dataregister3[64];
-bool dataregister4[64];
-bool dataregister5[64];
-bool dataregister6[64];
-bool dataregister7[64];
-bool dataregister8[64];
-bool dataregister9[64];
-bool dataregister10[64];
-bool dataregister11[64];
-bool dataregister12[64];
-bool dataregister13[64];
-bool dataregister14[64];
-bool dataregister15[64]; //adressreturn
-*/
+int dataregister[16]; //0 aluin0
+
 //Flags
 bool loadflag; //1: load from memory
 bool prewriteflag; //prebuffer to writeflag... refer to quicktest10092020withTMU
@@ -91,13 +74,5 @@ bool haltflag = 0; //halts CPU, almost like clock in real CPU
 bool insloadrequest; //request for refreshing instructionregister
 bool datloadrequest; //request for loading dataregister
 bool adrloadrequest; //
-
-//Busystates
-//bool alubusystate; //alu is busy //not useful: alu cannot be "looked into"
-//bool dataregisterbusystate; //loading data// not useful: additional circuitry slows down complete machine
-//bool insregisterbusystate; //refreshing instruction register
-//bool decoderbusystate; //decoding instruction
-
-
 
 #endif

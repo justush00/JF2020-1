@@ -12,6 +12,7 @@ void initialize()
 	jumpflag = 0; //jump
 	aluflag = 0; // maybe compare... coming later
 	loadmem();
+    tmemory = 0;
 }
 
 int running()
@@ -19,24 +20,24 @@ int running()
 	do{
 		//1. Daten / ALU laden, wenn vorheriger Befehl dies verlangt (Flag)
 		jumpflag = 0;
-		printf("\n%i: ", currentaddress);
+		//printf("\n%i: ", currentaddress);
 		if(loadflag == 1)
 		{
-			printf("DBG: LOADFLAG\n mem: %i\n destr: %i \n dr: %i\n", memory[currentaddress], destr, dataregister[destr]);
+			//printf("DBG: LOADFLAG\n mem: %i\n destr: %i \n dr: %i\n", memory[currentaddress], destr, dataregister[destr]);
 			dataregister[destr] = memory[currentaddress];
 			//nach erfolgreichem Laden, muessen die Flags/?Instruktionsregister zurueckgesetzt werden
 			loadflag = 0;
 		}
 		else if(aluflag == 1)
 		{
-			printf("DBG: ALUFLAG\n");
+			//printf("DBG: ALUFLAG\n");
 			dataregister[destr] = aluout;
 			aluflag = 0;
 		}
 		else if(writeflag == 1)
 		{
-			printf("DBG: WRITEFLAG\n");
-			memory[currentaddress] = dataregister[src0];
+			//printf("DBG: WRITEFLAG\n");
+			memwrite();
 			writeflag = 0;
 			prewriteflag = 0;
 		}
@@ -51,14 +52,14 @@ int running()
 		  {
 		    insregb[n] = 0;
 			}
-			printf("\ndebug: ");
+			//printf("\ndebug: ");
 			for(n = 0; instructionregister0 > 0; n++)
 		  {
 		    insregb[n] = instructionregister0 % 2;
 		    instructionregister0 = instructionregister0 / 2;
-				printf("%i", insregb[n]);
+            //printf("%i", insregb[n]);
 		  }
-			printf("\n");
+			//printf("\n");
 			//src0 conversion bin to dec
 		  for(n = 5; n < 9; n++)
 		  {
@@ -74,7 +75,7 @@ int running()
 		  {
 		    destr = destr + (insregb[n] * powe(2, n-13));
 		  }
-			printf("\ndebug1: %i, %i, %i\n", src0, src1, destr);
+			//printf("\ndebug1: %i, %i, %i\n", src0, src1, destr);
 
 			//Instruction:
 			binary[0] = insregb[0];
@@ -92,62 +93,62 @@ int running()
 
 			if(! memcmp(binary, nop, m * sizeof(int)))
 			{
-				printf("nop executed!");
+				//printf("nop executed!");
 				//printf("DEBIG: %i %i %i\n", src0, src1, destr);
 			}
 			if(! memcmp(binary, load, m * sizeof(int)))
 			{
 				loadflag = 1;
-				printf("load executed!");
+				//printf("load executed!");
 			}
 			if(! memcmp(binary, store, m * sizeof(int)))
 			{
-				printf("store executed!");
+				//printf("store executed!");
 				prewriteflag = 1;
 			}
 			if(! memcmp(binary, jump, m * sizeof(int)))
 			{
-				printf("jump executed!");
+				//printf("jump executed!");
 				jumpflag = 1;
 			}
 			if(! memcmp(binary, add, m * sizeof(int)))
 			{
-				printf("add executed!");
+				//printf("add executed!");
 				int r = dataregister[src0] + dataregister[src1];
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, shft, m * sizeof(int)))
 			{
-				printf("shift executed!");
+				//printf("shift executed!");
 				int r = dataregister[src0] << 1;
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, nand, m * sizeof(int)))
 			{
-				printf("nand executed!");
+				//printf("nand executed!");
 				int r = !(dataregister[src0] && dataregister[src1]);
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, not, m * sizeof(int)))
 			{
-				printf("not executed!");
+				//printf("not executed!");
 				int r = !dataregister[src0];
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, xor, m * sizeof(int)))
 			{
-				printf("xor executed!");
+				//printf("xor executed!");
 				int r = dataregister[src0] ^ dataregister[src1];
 				aluout = r;
 				aluflag = 1;
 			}
 			if(! memcmp(binary, jeq, m * sizeof(int)))
 			{
-				printf("equal jump executed!");
+				//printf("equal jump executed!");
 				if(dataregister[src0] == dataregister[src1])
 				{
 					jumpflag = 1;
@@ -156,7 +157,7 @@ int running()
 			}
 			if(! memcmp(binary, jle, m * sizeof(int)))
 			{
-				printf("less jump executed!");
+				//printf("less jump executed!");
 				if(dataregister[src0] < dataregister[src1])
 				{
 					jumpflag = 1;
@@ -164,11 +165,24 @@ int running()
 			}
 			if(! memcmp(binary, jge, m * sizeof(int)))
 			{
-				printf("greater jump executed!");
+				//printf("greater jump executed!");
 				if(dataregister[src0] > dataregister[src1])
 				{
 					jumpflag = 1;
 				}
+			}
+            if(! memcmp(binary, mtgl, m * sizeof(int)))
+			{
+				//printf("MEM switched to: ");
+                toggle();
+                /*if(ram == 0)
+                {
+                    printf("PRAM");
+                }
+                else if(ram == 1)
+                {
+                    printf("TRAM");
+                }*/
 			}
 			if(! memcmp(binary, hlt, m * sizeof(int)))
 			{
@@ -177,12 +191,12 @@ int running()
 			}
 
 			/*
-			Another Instruction like CMPJMP
+			FOR CONTROLLER CONTROL: MTGL -> toggles between pmem and tmem
 			*/
 
 		}
 
-
+        printt();
 		//scanf("%i", &i); //DBG Stepping
 
 		//naechste Adresse laden

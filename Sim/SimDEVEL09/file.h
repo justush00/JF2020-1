@@ -159,6 +159,11 @@ void assemble()
         {
           ins = 11;
         }
+    
+    if(strcmp(INS, "tgl") == 0)
+        {
+          ins = 12;
+        }
 
     if(strcmp(INS, "hlt") == 0)
         {

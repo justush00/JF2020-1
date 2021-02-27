@@ -8,6 +8,8 @@
 #include "vars.h"
 #include "graphical.h"
 #include "file.h"
+#include "controller.h"
+#include "terminal.h"
 #include "functions.h"
 
 int main()
