@@ -12,7 +12,10 @@ void initialize()
 	jumpflag = 0; //jump
 	aluflag = 0; // maybe compare... coming later
 	loadmem();
-    tmemory = 0;
+    for(int g=0; g<10; g++)
+    {
+        tmemory[g] = 0;
+    }
 }
 
 int running()
@@ -24,8 +27,11 @@ int running()
 		if(loadflag == 1)
 		{
 			//printf("DBG: LOADFLAG\n mem: %i\n destr: %i \n dr: %i\n", memory[currentaddress], destr, dataregister[destr]);
-			dataregister[destr] = memory[currentaddress];
-			//nach erfolgreichem Laden, muessen die Flags/?Instruktionsregister zurueckgesetzt werden
+			/*dataregister[destr] = memory[currentaddress];*/
+            // ^ direct memory access
+            //nach erfolgreichem Laden, muessen die Flags/?Instruktionsregister zurueckgesetzt werden
+			//indirect memory access over memory controller
+			memread();
 			loadflag = 0;
 		}
 		else if(aluflag == 1)
@@ -37,7 +43,7 @@ int running()
 		else if(writeflag == 1)
 		{
 			//printf("DBG: WRITEFLAG\n");
-			memwrite();
+			memwrite(); //working over mem-controller
 			writeflag = 0;
 			prewriteflag = 0;
 		}

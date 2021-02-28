@@ -52,7 +52,7 @@ int aluout;
 //Memory Vars
 int memory[255]; //memory interface for cpu
 int pmemory[255]; //program memory for controller
-int tmemory; //terminal memory for controller
+int tmemory[10]; //terminal memory for controller
 
 
 //Register

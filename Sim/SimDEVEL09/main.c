@@ -5,12 +5,12 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <string.h>
-#include "vars.h"
-#include "graphical.h"
-#include "file.h"
-#include "controller.h"
-#include "terminal.h"
-#include "functions.h"
+#include "vars.h"   //variables for running the program
+#include "graphical.h" //displaying the menu and other screens that are not needed
+#include "file.h"   //file I/O
+#include "terminal.h"   //terminal I/O of CPU/Computer
+#include "controller.h" //memory controller for CPU
+#include "functions.h"  //core of CPU and other functions needed for working CPU
 
 int main()
 {

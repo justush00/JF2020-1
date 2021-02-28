@@ -2,7 +2,7 @@
 #define CONTROLLER_H
 
 bool ram = 0; // ram = 0 pram, ram = 1 tram
-int tmemcount = 0;
+//int tmemcount = 0;
 
 void toggle()
 {
@@ -17,7 +17,7 @@ void memwrite()
     }
     if(ram == 1)
     {
-        tmemory = dataregister[src0];
+        tmemory[0] = dataregister[src0];
        /* if(tmemcount >= 254)
         {
             tmemcount = 0;
@@ -26,6 +26,18 @@ void memwrite()
         {
             tmemcount++;
         }*/
+    }
+}
+
+void memread()
+{
+    if(ram == 0)
+    {
+        dataregister[destr] = memory[currentaddress];
+    }
+    if(ram == 1)
+    {
+        scant();
     }
 }
 
