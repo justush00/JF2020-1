@@ -1,17 +1,19 @@
-Befehle Stand: 27.12.2020
-Instructions as of 27.12.2020
-refer to file.h for further info
+Befehle Stand: 04.03.2021
+Instructions as of 04.03.2020
 
 nop = no operation; in memory 0
 loa = load value from ram to register; in memory 1; requires DEST
 str = store register value in next memory adress;  in memory 2; requires SRC0
-jmp = jump adress loaded in... ; in memory 3
+jmp = jump address loaded in r15 ; in memory 3
 add = add; requires SRC0, SRC1, dest
 lsh = left shift; requires SRC0, dest
 nnd = nand; SRC0, SRC1, dest
 not = not; SRC0, dest
 xor = xor; SRC0, SRC1, dest
-jeq = jump if equal; SRC0, SRC1
-jle = jump if less; SRC0, SRC1
-jge = jump if greater; SRC0, SRC1
+jeq = jump to address loaded in r15 if equal; SRC0, SRC1
+jle = jump to address loaded in r15 if less; SRC0, SRC1
+jge = to address loaded in r15 jump if greater; SRC0, SRC1
 hlt = halt
+tgl = toggle between memory and terminal
+
+!replace jmp with jeq 0,0,0 -> save one instruction

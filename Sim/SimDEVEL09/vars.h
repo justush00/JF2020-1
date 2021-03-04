@@ -50,8 +50,8 @@ int insregb[20];
 
 int aluout;
 //Memory Vars
-int memory[255]; //memory interface for cpu
-int pmemory[255]; //program memory for controller
+int memory[65535]; //memory interface for cpu
+//int pmemory[255]; //program memory for controller
 int tmemory[10]; //terminal memory for controller
 
 

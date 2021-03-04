@@ -1,10 +1,20 @@
 README - JF2020-1
-(21.06.2020)
+(04.03.2021)
+04.03.2021: my brain is smoking
 
 documentation on progression
+_________________________________________________________________________________________________
+build: gcc main.c
 
+usage: USER INPUT:  - 1 load .mem file
+                    - 3 show content of all registers
+                    - 7 assemble (same directory full name)
+                    - 8 execute program
+
+_________________________________________________________________________________________________
 learned from old project
 New try at making a microprocessor/computer (let's see what happens)
+>04032021: continuing development of simulator, but no real world model
 
 Requirements:
 	decoding of instructions
@@ -21,14 +31,52 @@ Problems:
 	control of big memory
 	organizing in memory DAT,INS
 	function of jumps
-
-SOLUTIONS:
-	memory segmentation
-	64 bit memory (no segmentation needed (yet), faster processing)
+	
 
 Idea for Multicore System:
 	
 	_________		______________________________		/-->CPU0
 	| Memory| <---> |Memory Management Unit (MMU)|  <--/-->	CPU1
+_________________________________________________________________________________________________
+
+Befehle Stand: 04.03.2021
+Instructions as of 04.03.2020
+
+nop = no operation; in memory 0
+loa = load value from ram to register; in memory 1; requires DEST
+str = store register value in next memory adress;  in memory 2; requires SRC0
+jmp = jump address loaded in r15 ; in memory 3
+add = add; requires SRC0, SRC1, dest
+lsh = left shift; requires SRC0, dest
+nnd = nand; SRC0, SRC1, dest
+not = not; SRC0, dest
+xor = xor; SRC0, SRC1, dest
+jeq = jump to address loaded in r15 if equal; SRC0, SRC1
+jle = jump to address loaded in r15 if less; SRC0, SRC1
+jge = to address loaded in r15 jump if greater; SRC0, SRC1
+hlt = halt
+tgl = toggle between memory and terminal
+
+!replace jmp with jeq 0,0,0 -> save one instruction
+
+_________________________________________________________________________________________________
+
+GOAL is to implement a "native assembler" capable for running in the simulator.
+
+to accomplish this goal the simulator will have a 16 bit memory space, non linear addressing and a (for now) "dumb" memory controller
+
+non linear addressing:
+    the cpu will need to: access memory areas out of execution flow(not directly load from memory adress where program counter currently is)
+
+memory controller:
+    give the cpu the data it requests from memory address in dataregister 15
+    -> the size of the dataregisters is designed to be 8bit... so to really load data from "upper" memory you would've to load the lower address part to r15 and the higher address part to r14
+    
+smart (software) memory management:
+    to execute an assembled program the cpu has to recognize where it was stored in memory
+    
+    index memory program has to hold list of programs and starting adresses
+    -> could this be something like an OS? it kind of manages the memory in between of programs
+    
 
 

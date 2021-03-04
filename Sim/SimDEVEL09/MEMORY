@@ -1,0 +1,18 @@
+GOAL is to implement a "native assembler" capable for running in the simulator.
+
+to accomplish this goal the simulator will have a 16 bit memory space, non linear addressing and a (for now) "dumb" memory controller
+
+non linear addressing:
+    the cpu will need to: access memory areas out of execution flow(not directly load from memory adress where program counter currently is)
+
+memory controller:
+    give the cpu the data it requests from memory address in dataregister 15
+    -> the size of the dataregisters is designed to be 8bit... so to really load data from "upper" memory you would've to load the lower address part to r15 and the higher address part to r14
+    
+smart (software) memory management:
+    to execute an assembled program the cpu has to recognize where it was stored in memory
+    
+    index memory program has to hold list of programs and starting adresses
+    -> could this be something like an OS? it kind of manages the memory in between of programs
+    
+04.03.2021: my brain is smoking
