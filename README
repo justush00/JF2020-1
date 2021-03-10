@@ -4,12 +4,15 @@ README - JF2020-1
 
 documentation on progression
 _________________________________________________________________________________________________
-build: gcc main.c
+build: 
+the current development Simulator is situated in ./Sim/SimDEVEL09/
 
-usage: USER INPUT:  - 1 load .mem file
-                    - 3 show content of all registers
-                    - 7 assemble (same directory full name)
-                    - 8 execute program
+build:	gcc main.c
+
+usage: 	USER INPUT:	- 1 load .mem file
+                    	- 3 show content of all registers
+                    	- 7 assemble (same directory full name)
+                    	- 8 execute program
 
 _________________________________________________________________________________________________
 learned from old project
