@@ -35,8 +35,12 @@ void memread()
     if(ram == 0)
     {
         //more modes for loading whether from current adress or from absolute memory address
-        dataregister[destr] = memory[currentaddress];
-        //dataregister[destr] = memory[dataregister[15]];
+        
+        //use for legacy programs (linear adressing)
+        //dataregister[destr] = memory[currentaddress];
+        
+        //use for new programs (newer than 10.03.2021)
+        dataregister[destr] = memory[dataregister[15]];
     }
     if(ram == 1)
     {
