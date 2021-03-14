@@ -1,10 +1,8 @@
 # README - JF2020-1
 
 ## build
-	'''
 	cd ./Sim/build
 	gcc ./main.c
-	'''
 ## usage
 	USER INPUT:
 - 1 load .mem file
@@ -20,7 +18,7 @@
 
 ### Requirements/What do I  need to solve?
 - [x] decoding of instructions
-- [x] *1 memory channel -> single memory for DAT,INS,etc...
+- [x] 1 memory channel -> single memory for DAT,INS,etc...
 - [ ] memory management
 - [x] useful amount of registers
 
@@ -33,3 +31,4 @@ organizing in memory DAT,INS
 	
 ## SCRAPPED
 I wanted to build the CPU with chips of the CD40XX and 74XX series. Due to high cost and not much time, this is idea scrapped.
+
