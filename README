@@ -1,10 +1,10 @@
 # README - JF2020-1
 
-
-## build 
+## build
+	'''
 	cd ./Sim/build
 	gcc ./main.c
-
+	'''
 ## usage
 	USER INPUT:
 - 1 load .mem file
