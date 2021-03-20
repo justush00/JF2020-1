@@ -2,6 +2,8 @@
 
 # README - JF2020-1
 
+software simulated processor for learning written in C
+
 ## build
 	cd ./Sim/build
 	gcc ./main.c
