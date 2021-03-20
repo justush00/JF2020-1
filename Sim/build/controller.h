@@ -40,6 +40,7 @@ void memread()
         //dataregister[destr] = memory[currentaddress];
         
         //use for new programs (newer than 10.03.2021)
+        printf("loading from mem!\n");
         dataregister[destr] = memory[dataregister[15]];
     }
     if(ram == 1)

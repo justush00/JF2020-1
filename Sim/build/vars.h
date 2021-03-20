@@ -75,4 +75,7 @@ bool insloadrequest; //request for refreshing instructionregister
 bool datloadrequest; //request for loading dataregister
 bool adrloadrequest; //
 
+//debugging
+int debug = 0;
+
 #endif

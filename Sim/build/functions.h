@@ -4,7 +4,7 @@
 
 void initialize()
 {
-	currentaddress = 0;
+	currentaddress = 1;
 	haltflag = 0; //halt cpu
 	loadflag = 0; //load data from mem
 	writeflag = 0; //write data to mem
@@ -18,12 +18,39 @@ void initialize()
     }
 }
 
+void printregs()
+{
+    printf("DR0:%i\n", dataregister[0]);
+    printf("DR1:%i\n", dataregister[1]);
+    printf("DR2:%i\n", dataregister[2]);
+    printf("DR3:%i\n", dataregister[3]);
+    printf("DR4:%i\n", dataregister[4]);
+    printf("DR5:%i\n", dataregister[5]);
+    printf("DR6:%i\n", dataregister[6]);
+    printf("DR7:%i\n", dataregister[7]);
+    printf("DR8:%i\n", dataregister[8]);
+    printf("DR9:%i\n", dataregister[9]);
+    printf("DR10:%i\n", dataregister[10]);
+    printf("DR11:%i\n", dataregister[11]);
+    printf("DR12:%i\n", dataregister[12]);
+    printf("DR13:%i\n", dataregister[13]);
+    printf("DR14:%i\n", dataregister[14]);
+    printf("DR15:%i\n", dataregister[15]);
+}
+
+void enabledebugrunning()
+{
+    debug = 1;
+    printf("debugging is enabled!\n");
+}
+
 int running()
 {
+    currentaddress = 1;
 	do{
 		//1. Daten / ALU laden, wenn vorheriger Befehl dies verlangt (Flag)
 		jumpflag = 0;
-		//printf("\n%i: ", currentaddress);
+		printf("\n%i: ", currentaddress);
 		if(loadflag == 1)
 		{
 			//printf("DBG: LOADFLAG\n mem: %i\n destr: %i \n dr: %i\n", memory[currentaddress], destr, dataregister[destr]);
@@ -96,6 +123,7 @@ int running()
 			src1: operator1; Instruktionsabhaengig
 			dest: Zielregister
 			*/
+            
 
 			if(! memcmp(binary, nop, m * sizeof(int)))
 			{
@@ -195,7 +223,12 @@ int running()
 				printf("halted!\n");
 				haltflag = 1;
 			}
-
+			
+			else
+            {
+                printf("no instruction found!\n");
+            }
+            
 			/*
 			FOR CONTROLLER CONTROL: MTGL -> toggles between pmem and tmem
 			*/
@@ -205,6 +238,17 @@ int running()
         printt();
 		//scanf("%i", &i); //DBG Stepping
 
+        //debugmode
+		if(debug == 1)
+        {
+            printf("DEBUG: %i; %i\n", currentaddress, memory[currentaddress]);
+            printregs();
+			do
+            {
+                scanf("%i", &i);
+            }while(i != 1);
+        }
+        
 		//naechste Adresse laden
 		if(jumpflag == 1)
 		{
@@ -226,6 +270,7 @@ int running()
 				haltflag = 1;
 			}
 		}
+		
 	}while(haltflag != 1);
 }
 

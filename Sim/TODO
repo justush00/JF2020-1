@@ -1,0 +1,4 @@
+separate regs for loading from mem and jumping
+
+loadreg = r15
+jumpreg = r14
