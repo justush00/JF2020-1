@@ -50,7 +50,7 @@ int running()
 	do{
 		//1. Daten / ALU laden, wenn vorheriger Befehl dies verlangt (Flag)
 		jumpflag = 0;
-		printf("\n%i: ", currentaddress);
+		//printf("\n%i: ", currentaddress);
 		if(loadflag == 1)
 		{
 			//printf("DBG: LOADFLAG\n mem: %i\n destr: %i \n dr: %i\n", memory[currentaddress], destr, dataregister[destr]);
@@ -223,12 +223,6 @@ int running()
 				printf("halted!\n");
 				haltflag = 1;
 			}
-			
-			else
-            {
-                printf("no instruction found!\n");
-            }
-            
 			/*
 			FOR CONTROLLER CONTROL: MTGL -> toggles between pmem and tmem
 			*/
@@ -256,7 +250,7 @@ int running()
 			{
 				writeflag = 1;
 			}
-			currentaddress = dataregister[15];
+			currentaddress = dataregister[14];
 		}
 		if(jumpflag == 0)
 		{

@@ -1,4 +1,13 @@
-separate regs for loading from mem and jumping
+[x] separate regs for loading from mem and jumping
 
 loadreg = r15
 jumpreg = r14
+
+
+____________________
+
+[x] fix fibnew.asm to add correctly
+
+____________________
+
+[] add breakpoints to debug-mode
