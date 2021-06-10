@@ -34,5 +34,5 @@ organizing in memory DAT,INS
  function of jumps
 	
 ## SCRAPPED
-I wanted to build the CPU with chips of the CD40XX and 74XX series. Due to high cost and not much time, this is idea scrapped.
+I wanted to build the CPU with chips of the CD40XX and 74XX series. Due to high cost and not much time, this idea is scrapped.
 
